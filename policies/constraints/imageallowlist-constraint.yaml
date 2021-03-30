@@ -8,12 +8,12 @@ metadata:
 spec:
   # Example of how to configure the global allowlist:
   #
-  # parameters:
+  parameters:
   #   trustedregistries:
   #     - trusted.registry.com
   #     - another.registry.com/my-repo
-  #   trustedimages:
-  #     - registry.com/repo/trusted-image
+    trustedimages:
+      - busybox
   #     - trusted-image
   #     - trusted-image-with-version:v1.0
   match:
