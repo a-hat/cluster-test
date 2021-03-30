@@ -9,7 +9,7 @@ spec:
     - name: stage1
       cluster:
         repository: https://github.com/a-hat/cluster-test
-        name: test-cluster
+        name: cluster-test
       resources:
         path: apps
       targetNamespace: app
