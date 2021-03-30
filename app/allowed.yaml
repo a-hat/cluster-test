@@ -4,8 +4,6 @@ metadata:
   name: nginx-deployment
   labels:
     app: nginx
-  annotations:
-    phylake.io/policy.exclusion.imageallowlist: Test
 spec:
   replicas: 3
   selector:
