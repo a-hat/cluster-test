@@ -1,0 +1,15 @@
+apiVersion: phylake.io/v1alpha1
+kind: Application
+metadata:
+  name: policies
+spec:
+  applicationOwner: a-hat
+  securityLevel: public
+  stages:
+    - name: stage1
+      cluster:
+        repository: https://github.com/a-hat/cluster-test
+        name: cluster-test
+      resources:
+        path: policies
+      targetNamespace: policies
