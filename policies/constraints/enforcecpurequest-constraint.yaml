@@ -1,0 +1,12 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: enforcecpurequest
+metadata:
+  name: enforcecpurequest
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-100"
+spec:
+  match:
+    kinds:
+      - apiGroups: ["", "apps", "batch"]
+        kinds: ["Pod", "ReplicaSet", "ReplicationController", "Deployment", "StatefulSet", "DaemonSet", "Job", "CronJob"]
