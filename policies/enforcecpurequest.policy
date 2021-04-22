@@ -1,0 +1,49 @@
+apiVersion: phylake.syncier.cloud/v1alpha2
+kind: Policy
+metadata:
+  name: EnforceCPURequest
+spec:
+  description: |-
+    Enforces that a CPU request is specified for every container.
+  enforcementType: opa-gatekeeper
+  kind:
+    - operational
+    - 'Requests / Limits'
+  example: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: nginx-deployment
+      labels:
+        app: nginx
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: nginx
+      template:
+        metadata:
+          labels:
+            app: nginx
+        spec:
+          containers:
+            - name: nginx
+              image: nginx:1.14.2
+              ports:
+                - containerPort: 80
+    +         resources:
+    +           requests:
+    +             cpu: 1
+  # The following file references are overwritten by the generator script
+  ruleFiles: [constraint-templates/enforcecpurequest-template.yaml, constraints/enforcecpurequest-constraint.yaml, rules/enforcecpurequest.rego]
+  riskAcceptance:
+    annotationName: phylake.io/policy.exclusion.enforcecpurequest
+    example: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: your-deployment
+        annotations:
+          phylake.io/policy.exclusion.enforcecpurequest: |-
+            This pod consumes an unpredictable amount of CPU.
+      ...
