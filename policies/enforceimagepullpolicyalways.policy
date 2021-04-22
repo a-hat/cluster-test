@@ -1,0 +1,47 @@
+apiVersion: phylake.syncier.cloud/v1alpha2
+kind: Policy
+metadata:
+  name: EnforceImagePullPolicyAlways
+spec:
+  description: >-
+    Ensures that images are always pulled from the registry even if they are already present on the node.
+  enforcementType: opa-gatekeeper
+  kind:
+    - security
+    - Images
+  example: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: nginx-deployment
+      labels:
+        app: nginx
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: nginx
+      template:
+        metadata:
+          labels:
+            app: nginx
+        spec:
+          containers:
+            - name: nginx
+              image: nginx:1.14.2
+              ports:
+                - containerPort: 80
+    +         imagePullPolicy: Always
+  # The following file references are overwritten by the generator script
+  ruleFiles: [constraint-templates/enforceimagepullpolicyalways-template.yaml, constraints/enforceimagepullpolicyalways-constraint.yaml, rules/enforceimagepullpolicyalways.rego]
+  riskAcceptance:
+    annotationName: phylake.io/policy.exclusion.enforceimagepullpolicyalways
+    example: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: your-deployment
+        annotations:
+          phylake.io/policy.exclusion.enforceimagepullpolicyalways: |-
+            These containers can safely run with pre-pulled images.
+      ...
