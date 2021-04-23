@@ -1,0 +1,47 @@
+apiVersion: phylake.syncier.cloud/v1alpha2
+kind: Policy
+metadata:
+  name: EnforceImageVersion
+spec:
+  description: |-
+    Enforces that every container is using an image which references a specific version.
+  enforcementType: opa-gatekeeper
+  kind:
+    - security
+    - Images
+  example: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: nginx-deployment
+      labels:
+        app: nginx
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: nginx
+      template:
+        metadata:
+          labels:
+            app: nginx
+        spec:
+          containers:
+            - name: nginx
+    -         image: nginx
+    +         image: nginx:1.19.8
+              ports:
+                - containerPort: 80
+  # The following file references are overwritten by the generator script
+  ruleFiles: [constraint-templates/enforceimageversion-template.yaml, constraints/enforceimageversion-constraint.yaml, rules/enforceimageversion.rego]
+  riskAcceptance:
+    annotationName: phylake.io/policy.exclusion.enforceimageversion
+    example: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: your-deployment
+        annotations:
+          phylake.io/policy.exclusion.enforceimageversion: |-
+            The image vendor provides the image only with the tag "latest".
+      ...
