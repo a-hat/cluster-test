@@ -1,7 +1,7 @@
-apiVersion: phylake.io/v1alpha1
+apiVersion: securitytower.io/v1alpha1
 kind: Application
 metadata:
-  name: app
+  name: policies
 spec:
   applicationOwner: a-hat
   securityLevel: public
@@ -11,5 +11,5 @@ spec:
         repository: https://github.com/a-hat/cluster-test
         name: cluster-test
       resources:
-        path: app
-      targetNamespace: app
+        path: policies
+      targetNamespace: policies

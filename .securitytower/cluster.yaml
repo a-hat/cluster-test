@@ -1,4 +1,4 @@
-apiVersion: phylake.io/v1alpha1
+apiVersion: securitytower.io/v1alpha1
 kind: Cluster
 metadata:
   name: cluster-test
