@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: cache-test
 spec:
-  applicationOwner: "https://github.com/a-hat/cluster-test/blob/main/cluster/namespaces/sbx/cpl15388"
+  applicationOwner: andreas.kappler@syncier.com
   securityLevel: internal
   stages:
     - name: sbx
@@ -13,5 +13,3 @@ spec:
       resources:
         path: cluster/namespaces/sbx/cpl
       targetNamespace: sbx-cpl
-      clsuter:
-        repository: https://github.com/a-hat/cluster-test/blob/main/cluster/namespaces/sbx/cpl27667
