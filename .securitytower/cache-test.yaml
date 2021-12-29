@@ -13,3 +13,5 @@ spec:
       resources:
         path: cluster/namespaces/sbx/cpl
       targetNamespace: sbx-cpl
+      clsuter:
+        repository: https://github.com/a-hat/cluster-test/blob/main/cluster/namespaces/sbx/cpl27667
