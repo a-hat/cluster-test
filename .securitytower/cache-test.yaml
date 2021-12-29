@@ -8,7 +8,7 @@ spec:
   stages:
     - name: sbx
       cluster:
-        repository: https://github.com/a-hat/cluster-test/blob/main/cluster/namespaces/sbx/cpl26843
+        repository: https://github.com/a-hat/cluster-test/blob/main/cluster/namespaces/sbx/cpl24580
         name: dev
       resources:
         path: cluster/namespaces/sbx/cpl
