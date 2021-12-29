@@ -1,0 +1,15 @@
+apiVersion: securitytower.io/v1alpha1
+kind: Application
+metadata:
+  name: cache-test
+spec:
+  applicationOwner: akappler@syncier.com
+  securityLevel: internal
+  stages:
+    - name: sbx
+      cluster:
+        repository: https://github.com/syncier/cluster-abs-syc-dev.git
+        name: dev
+      resources:
+        path: cluster/namespaces/sbx/cpl
+      targetNamespace: sbx-cpl
