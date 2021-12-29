@@ -11,5 +11,5 @@ spec:
         repository: https://github.com/a-hat/cluster-test
         name: dev
       resources:
-        path: cluster/namespaces/sbx/cpl22477
+        path: cluster/namespaces/sbx/cpl418
       targetNamespace: sbx-cpl
