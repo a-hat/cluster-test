@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: cache-test
 spec:
-  applicationOwner: "22839"
+  applicationOwner: "https://github.com/a-hat/cluster-test/blob/main/cluster/namespaces/sbx/cpl15388"
   securityLevel: internal
   stages:
     - name: sbx
