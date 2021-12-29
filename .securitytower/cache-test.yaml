@@ -8,7 +8,7 @@ spec:
   stages:
     - name: sbx
       cluster:
-        repository: https://github.com/syncier/cluster-abs-syc-dev.git
+        repository: https://github.com/a-hat/cluster-test.git
         name: dev
       resources:
         path: cluster/namespaces/sbx/cpl
