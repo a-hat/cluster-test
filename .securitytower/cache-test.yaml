@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: cache-test
 spec:
-  applicationOwner: "10064"
+  applicationOwner: "31715"
   securityLevel: internal
   stages:
     - name: sbx
