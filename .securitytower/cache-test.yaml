@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: cache-test
 spec:
-  applicationOwner: akappler@syncier.com
+  applicationOwner: "3322"
   securityLevel: internal
   stages:
     - name: sbx
